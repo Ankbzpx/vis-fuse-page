@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="vspacer">
+      <p>IEEE/CVF CVPR 2023</p>
+      <h1> Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting </h1>
+      <a>Ruichen Zheng</a><sup>*,1,2</sup>,
+      <a>Peng Li</a><sup>*,1</sup>,
+      <a href="https://www.sigs.tsinghua.edu.cn/whq_en/main.htm">Haoqian Wang</a><sup>1</sup>,
+      <a href="http://ytrock.com">Tao Yu</a><sup>1</sup>
+      <br>
+      <sup>1</sup>Tsinghua University, China, <sup>2</sup>Weilan Tech, Beijing, China
+    </div>
+
+    <div class="vspacer">
+      <span class="link-block">
+        <a href="https://arxiv.org/abs/2304.11900">
+          <span class="icon">
+            <i class="fa fa-file-pdf-o"></i>
+          </span>
+          <span>Paper</span>
+        </a>
+      </span>
+      <span class="hspacer"></span>
+      <span>
+        <a href="https://www.youtube.com/watch?v=YeMCgPaz1Ww">
+          <span class="icon">
+            <i class="fa fa-youtube"></i>
+          </span>
+          <span>Video</span>
+        </a>
+      </span>
+      <span class="hspacer"></span>
+      <span>
+        <a>
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+          <span>Code (Coming soon)</span>
+        </a>
+      </span>
+    </div>
+
+    <h1 class="mid"> Abstract </h1>
+    <div class="abstract">
+      <p>
+        Detailed 3D reconstruction and photo-realistic relighting of digital humans are essential for various
+        applications.
+      </p>
+      <p>
+        To this end, we propose a novel sparse-view 3d human reconstruction framework that closely incorporates the
+        occupancy field and albedo field with an additional visibility field–it not only resolves occlusion ambiguity in
+        multi-view feature aggregation, but can also be used to evaluate light attenuation for self-shadowed relighting.
+        To enhance its training viability and efficiency, we discretize visibility onto a fixed set of sample directions
+        and supply it with coupled geometric 3D depth feature and local 2D image feature. We further propose a novel
+        rendering-inspired loss, namely TransferLoss, to implicitly enforce the alignment between visibility and
+        occupancy field, enabling end-to-end joint training.
+      </p>
+      <p>
+        Results and extensive experiments demonstrate the effectiveness of the proposed method, as it surpasses
+        state-of-the-art in terms of reconstruction accuracy while achieving comparably accurate relighting to
+        ray-traced ground truth.
+      </p>
+    </div>
+
+    <br>
+    <h1 class="mid">Video</h1>
+    <div class="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YeMCgPaz1Ww" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <br>
+    <h1 class="mid">BibTeX</h1>
+    <div class="bib">
+      <pre><code>
+        @InProceedings{Zheng_2023_CVPR,
+          author    = {Zheng, Ruichen and Li, Peng and Wang, Haoqian and Yu, Tao},
+          title     = {Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting},
+          booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+          month     = {June},
+          year      = {2023},
+          pages     = {216-226}
+        }
+      </code></pre>
+    </div>
+
+
+  </div>
+  <!-- <script type="module" src="/main.js"></script> -->
+</body>
+
+</html>
