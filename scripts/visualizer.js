@@ -141,12 +141,12 @@ const color_material = new THREE.ShaderMaterial({
 
 async function load_model(model_name) {
   let promises = [
-    fetch(`/${model_name}_V.json`).then((response) => response.json()),
-    fetch(`/${model_name}_F.json`).then((response) => response.json()),
-    fetch(`/${model_name}_VC.json`).then((response) => response.json()),
-    fetch(`/${model_name}_prt1.json`).then((response) => response.json()),
-    fetch(`/${model_name}_prt2.json`).then((response) => response.json()),
-    fetch(`/${model_name}_prt3.json`).then((response) => response.json()),
+    fetch(`${model_name}_V.json`).then((response) => response.json()),
+    fetch(`${model_name}_F.json`).then((response) => response.json()),
+    fetch(`${model_name}_VC.json`).then((response) => response.json()),
+    fetch(`${model_name}_prt1.json`).then((response) => response.json()),
+    fetch(`${model_name}_prt2.json`).then((response) => response.json()),
+    fetch(`${model_name}_prt3.json`).then((response) => response.json()),
   ];
 
   const data = await Promise.all(promises);
