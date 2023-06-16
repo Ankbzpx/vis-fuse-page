@@ -1,93 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/tsinghua.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Learning Visibility Field for Detailed 3D Human Reconstruction and
+      Relighting
+    </title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting</title>
-</head>
+  <body>
+    <div id="app">
+      <div class="vspacer">
+        <p>IEEE/CVF CVPR 2023</p>
+        <h1>
+          Learning Visibility Field for Detailed 3D Human Reconstruction and
+          Relighting
+        </h1>
+        <a>Ruichen Zheng</a><sup>*,1,2</sup>, <a>Peng Li</a><sup>*,1</sup>,
+        <a href="https://www.sigs.tsinghua.edu.cn/whq_en/main.htm"
+          >Haoqian Wang</a
+        ><sup>1</sup>, <a href="http://ytrock.com">Tao Yu</a><sup>1</sup>
+        <br />
+        <sup>1</sup>Tsinghua University, China, <sup>2</sup>Weilan Tech,
+        Beijing, China
+      </div>
 
-<body>
-  <div id="app">
-    <div class="vspacer">
-      <p>IEEE/CVF CVPR 2023</p>
-      <h1> Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting </h1>
-      <a>Ruichen Zheng</a><sup>*,1,2</sup>,
-      <a>Peng Li</a><sup>*,1</sup>,
-      <a href="https://www.sigs.tsinghua.edu.cn/whq_en/main.htm">Haoqian Wang</a><sup>1</sup>,
-      <a href="http://ytrock.com">Tao Yu</a><sup>1</sup>
-      <br>
-      <sup>1</sup>Tsinghua University, China, <sup>2</sup>Weilan Tech, Beijing, China
-    </div>
+      <div class="vspacer">
+        <span class="link-block">
+          <a href="https://arxiv.org/abs/2304.11900">
+            <span class="icon">
+              <i class="fa fa-file-pdf-o"></i>
+            </span>
+            <span>Paper</span>
+          </a>
+        </span>
+        <span class="hspacer"></span>
+        <span>
+          <a href="https://www.youtube.com/watch?v=YeMCgPaz1Ww">
+            <span class="icon">
+              <i class="fa fa-youtube"></i>
+            </span>
+            <span>Video</span>
+          </a>
+        </span>
+        <span class="hspacer"></span>
+        <span>
+          <a>
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+            <span>Code (Coming soon)</span>
+          </a>
+        </span>
+      </div>
 
-    <div class="vspacer">
-      <span class="link-block">
-        <a href="https://arxiv.org/abs/2304.11900">
-          <span class="icon">
-            <i class="fa fa-file-pdf-o"></i>
-          </span>
-          <span>Paper</span>
-        </a>
-      </span>
-      <span class="hspacer"></span>
-      <span>
-        <a href="https://www.youtube.com/watch?v=YeMCgPaz1Ww">
-          <span class="icon">
-            <i class="fa fa-youtube"></i>
-          </span>
-          <span>Video</span>
-        </a>
-      </span>
-      <span class="hspacer"></span>
-      <span>
-        <a>
-          <span class="icon">
-            <i class="fa fa-github"></i>
-          </span>
-          <span>Code (Coming soon)</span>
-        </a>
-      </span>
-    </div>
+      <div class="visualize">
+        <div id="gui_container"></div>
+        <canvas id="visCanvas"></canvas>
+      </div>
 
-    <h1 class="mid"> Abstract </h1>
-    <div class="abstract">
-      <p>
-        Detailed 3D reconstruction and photo-realistic relighting of digital humans are essential for various
-        applications.
-      </p>
-      <p>
-        To this end, we propose a novel sparse-view 3d human reconstruction framework that closely incorporates the
-        occupancy field and albedo field with an additional visibility field–it not only resolves occlusion ambiguity in
-        multi-view feature aggregation, but can also be used to evaluate light attenuation for self-shadowed relighting.
-        To enhance its training viability and efficiency, we discretize visibility onto a fixed set of sample directions
-        and supply it with coupled geometric 3D depth feature and local 2D image feature. We further propose a novel
-        rendering-inspired loss, namely TransferLoss, to implicitly enforce the alignment between visibility and
-        occupancy field, enabling end-to-end joint training.
-      </p>
-      <p>
-        Results and extensive experiments demonstrate the effectiveness of the proposed method, as it surpasses
-        state-of-the-art in terms of reconstruction accuracy while achieving comparably accurate relighting to
-        ray-traced ground truth.
-      </p>
-    </div>
+      <h1 class="mid">Abstract</h1>
+      <div class="abstract">
+        <p>
+          Detailed 3D reconstruction and photo-realistic relighting of digital
+          humans are essential for various applications.
+        </p>
+        <p>
+          To this end, we propose a novel sparse-view 3d human reconstruction
+          framework that closely incorporates the occupancy field and albedo
+          field with an additional visibility field–it not only resolves
+          occlusion ambiguity in multi-view feature aggregation, but can also be
+          used to evaluate light attenuation for self-shadowed relighting. To
+          enhance its training viability and efficiency, we discretize
+          visibility onto a fixed set of sample directions and supply it with
+          coupled geometric 3D depth feature and local 2D image feature. We
+          further propose a novel rendering-inspired loss, namely TransferLoss,
+          to implicitly enforce the alignment between visibility and occupancy
+          field, enabling end-to-end joint training.
+        </p>
+        <p>
+          Results and extensive experiments demonstrate the effectiveness of the
+          proposed method, as it surpasses state-of-the-art in terms of
+          reconstruction accuracy while achieving comparably accurate relighting
+          to ray-traced ground truth.
+        </p>
+      </div>
+      <div class="framework">
+        <img src="/framework.png" width="100%" height="100%" />
+      </div>
 
-    <br>
-    <h1 class="mid">Video</h1>
-    <div class="video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/YeMCgPaz1Ww" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
+      <br />
+      <h1 class="mid">Video</h1>
+      <div class="video">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/YeMCgPaz1Ww"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
 
-    <br>
-    <h1 class="mid">BibTeX</h1>
-    <div class="bib">
-      <pre><code>
+      <h1 class="mid">Poster</h1>
+      <div class="poster">
+        <iframe src="/visfuse_poster.pdf" width="840px" height="100%"> </iframe>
+      </div>
+
+      <br />
+      <h1 class="mid">BibTeX</h1>
+      <div class="bib">
+        <pre><code>
         @InProceedings{Zheng_2023_CVPR,
           author    = {Zheng, Ruichen and Li, Peng and Wang, Haoqian and Yu, Tao},
           title     = {Learning Visibility Field for Detailed 3D Human Reconstruction and Relighting},
@@ -97,11 +129,189 @@
           pages     = {216-226}
         }
       </code></pre>
+      </div>
     </div>
+    <script type="x-shader/x-vertex" id="vertexShader">
+      // Modified from: https://github.com/shunsukesaito/PIFu/blob/master/lib/renderer/gl/data/prt.vs
+      uniform mat3 R_sh;
 
+      attribute vec3 prt1;
+      attribute vec3 prt2;
+      attribute vec3 prt3;
 
-  </div>
-  <!-- <script type="module" src="/main.js"></script> -->
-</body>
+      varying vec3 vert_color;
+      varying float vert_prt[9];
 
+      float s_rc2 = 1.5853309190550713 * 1.0 / 0.91529123286551084;
+      float s_c4_div_c3 = -0.31539156525 / 0.94617469575;
+      float s_c4_div_c3_x2 = (-0.31539156525 / 0.94617469575) * 2.0;
+
+      float s_scale_dst2 = 0.94617469575 * 0.91529123286551084;
+      float s_scale_dst4 = 0.54627421529 * 0.91529123286551084;
+
+      void OptRotateBand0(float x[1], mat3 R, out float dst[1]) {
+          dst[0] = x[0];
+      }
+
+      // 9 multiplies
+      void OptRotateBand1(float x[3], mat3 R, out float dst[3]) {
+          // derived from  SlowRotateBand1
+          dst[0] = ( R[1][1])*x[0] + (-R[1][2])*x[1] + ( R[1][0])*x[2];
+          dst[1] = (-R[2][1])*x[0] + ( R[2][2])*x[1] + (-R[2][0])*x[2];
+          dst[2] = ( R[0][1])*x[0] + (-R[0][2])*x[1] + ( R[0][0])*x[2];
+      }
+
+      // 48 multiplies
+      void OptRotateBand2(float x[5], mat3 R, out float dst[5]) {
+          // Sparse matrix multiply
+          float sh0 =  x[3] + x[4] + x[4] - x[1];
+          float sh1 =  x[0] + s_rc2*x[2] +  x[3] + x[4];
+          float sh2 =  x[0];
+          float sh3 = -x[3];
+          float sh4 = -x[1];
+
+          // Rotations.  R0 and R1 just use the raw matrix columns
+          float r2x = R[0][0] + R[0][1];
+          float r2y = R[1][0] + R[1][1];
+          float r2z = R[2][0] + R[2][1];
+
+          float r3x = R[0][0] + R[0][2];
+          float r3y = R[1][0] + R[1][2];
+          float r3z = R[2][0] + R[2][2];
+
+          float r4x = R[0][1] + R[0][2];
+          float r4y = R[1][1] + R[1][2];
+          float r4z = R[2][1] + R[2][2];
+
+          // dense matrix multiplication one column at a time
+
+          // column 0
+          float sh0_x = sh0 * R[0][0];
+          float sh0_y = sh0 * R[1][0];
+          float d0 = sh0_x * R[1][0];
+          float d1 = sh0_y * R[2][0];
+          float d2 = sh0 * (R[2][0] * R[2][0] + s_c4_div_c3);
+          float d3 = sh0_x * R[2][0];
+          float d4 = sh0_x * R[0][0] - sh0_y * R[1][0];
+
+          // column 1
+          float sh1_x = sh1 * R[0][2];
+          float sh1_y = sh1 * R[1][2];
+          d0 += sh1_x * R[1][2];
+          d1 += sh1_y * R[2][2];
+          d2 += sh1 * (R[2][2] * R[2][2] + s_c4_div_c3);
+          d3 += sh1_x * R[2][2];
+          d4 += sh1_x * R[0][2] - sh1_y * R[1][2];
+
+          // column 2
+          float sh2_x = sh2 * r2x;
+          float sh2_y = sh2 * r2y;
+          d0 += sh2_x * r2y;
+          d1 += sh2_y * r2z;
+          d2 += sh2 * (r2z * r2z + s_c4_div_c3_x2);
+          d3 += sh2_x * r2z;
+          d4 += sh2_x * r2x - sh2_y * r2y;
+
+          // column 3
+          float sh3_x = sh3 * r3x;
+          float sh3_y = sh3 * r3y;
+          d0 += sh3_x * r3y;
+          d1 += sh3_y * r3z;
+          d2 += sh3 * (r3z * r3z + s_c4_div_c3_x2);
+          d3 += sh3_x * r3z;
+          d4 += sh3_x * r3x - sh3_y * r3y;
+
+          // column 4
+          float sh4_x = sh4 * r4x;
+          float sh4_y = sh4 * r4y;
+          d0 += sh4_x * r4y;
+          d1 += sh4_y * r4z;
+          d2 += sh4 * (r4z * r4z + s_c4_div_c3_x2);
+          d3 += sh4_x * r4z;
+          d4 += sh4_x * r4x - sh4_y * r4y;
+
+          // extra multipliers
+          dst[0] = d0;
+          dst[1] = -d1;
+          dst[2] = d2 * s_scale_dst2;
+          dst[3] = -d3;
+          dst[4] = d4 * s_scale_dst4;
+      }
+
+      void main() {
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          vert_color = color;
+
+          float PRT0, PRT1[3], PRT2[5];
+          PRT0 = prt1.x;
+          PRT1[0] = prt1.y;
+          PRT1[1] = prt1.z;
+          PRT1[2] = prt2.x;
+          PRT2[0] = prt2.y;
+          PRT2[1] = prt2.z;
+          PRT2[2] = prt3.x;
+          PRT2[3] = prt3.y;
+          PRT2[4] = prt3.z;
+
+          OptRotateBand1(PRT1, R_sh, PRT1);
+          OptRotateBand2(PRT2, R_sh, PRT2);
+
+          vert_prt[0] = PRT0;
+          vert_prt[1] = PRT1[0];
+          vert_prt[2] = PRT1[1];
+          vert_prt[3] = PRT1[2];
+          vert_prt[4] = PRT2[0];
+          vert_prt[5] = PRT2[1];
+          vert_prt[6] = PRT2[2];
+          vert_prt[7] = PRT2[3];
+          vert_prt[8] = PRT2[4];
+      }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShaderLight">
+      uniform vec3 env_sh[9];
+
+      varying vec3 vert_color;
+      varying float vert_prt[9];
+
+      vec4 gammaCorrection(vec4 vec, float g) {
+        return vec4(pow(vec.x, 1.0/g), pow(vec.y, 1.0/g), pow(vec.z, 1.0/g), vec.w);
+      }
+
+      void main() {
+          vec4 light_color = vec4(0.0);
+          for (int i = 0; i < 9; i++) {
+            light_color.x += vert_prt[i] * env_sh[i].x;
+            light_color.y += vert_prt[i] * env_sh[i].y;
+            light_color.z += vert_prt[i] * env_sh[i].z;
+          }
+          light_color.w = 1.0;
+          light_color = gammaCorrection(light_color, 2.2);
+
+          gl_FragColor = light_color;
+      }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShaderColor">
+      uniform vec3 env_sh[9];
+
+      varying vec3 vert_color;
+      varying float vert_prt[9];
+
+      vec4 gammaCorrection(vec4 vec, float g) {
+        return vec4(pow(vec.x, 1.0/g), pow(vec.y, 1.0/g), pow(vec.z, 1.0/g), vec.w);
+      }
+
+      void main() {
+          vec4 light_color = vec4(0.0);
+          for (int i = 0; i < 9; i++) {
+            light_color.x += vert_prt[i] * env_sh[i].x;
+            light_color.y += vert_prt[i] * env_sh[i].y;
+            light_color.z += vert_prt[i] * env_sh[i].z;
+          }
+          light_color.w = 1.0;
+          light_color = gammaCorrection(light_color, 2.2);
+          gl_FragColor = light_color * vec4(vert_color, 1.0);
+      }
+    </script>
+    <script type="module" src="scripts/visualizer.js"></script>
+  </body>
 </html>

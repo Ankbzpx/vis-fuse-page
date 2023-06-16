@@ -28,36 +28,27 @@ body {
   margin: auto;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 h1 {
-  font-size: 2.0em;
-  line-height: 1.1;
+  font-size: 2em;
+  line-height: 1.3;
 }
 
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.visualize {
+  max-width: 840px;
+  aspect-ratio: 1 / 0.6;
+  margin: auto;
+  padding: 2rem;
+  position: relative;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.framework {
+  max-width: 840px;
+  margin: auto;
+  padding: 2rem;
+  position: relative;
 }
 
 #app {
@@ -70,7 +61,14 @@ h1 {
   max-width: 560px;
   height: 315px;
   margin: auto;
-  display:flex;
+  display: flex;
+}
+
+.poster {
+  max-width: 640px;
+  aspect-ratio: 1.8;
+  margin: auto;
+  display: flex;
 }
 
 .abstract {
@@ -97,28 +95,11 @@ h1 {
 }
 
 .mid {
-  text-align: center;  
+  text-align: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+#gui_container {
+  position: absolute;
 }
 
 @media (prefers-color-scheme: light) {
