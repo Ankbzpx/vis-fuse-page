@@ -92,6 +92,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000,
 );
+camera.position.z = 0.7;
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 renderer.setSize(canvas.width, canvas.height);
 renderer.setClearColor(0x777777, 1);
@@ -109,8 +110,12 @@ window.addEventListener(
 
 const scene = new THREE.Scene();
 
-camera.position.z = 0.9;
 const orbit_controls = new OrbitControls(camera, renderer.domElement);
+orbit_controls.enablePan = false;
+orbit_controls.minPolarAngle = Math.PI / 2;
+orbit_controls.maxPolarAngle = Math.PI / 2;
+orbit_controls.maxDistance = 0.7;
+orbit_controls.minDistance = 0.7;
 
 let render_light = false;
 let current_sh_idx = 0;
