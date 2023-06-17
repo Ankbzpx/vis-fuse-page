@@ -40,7 +40,6 @@ h1 {
   max-width: 840px;
   aspect-ratio: 1 / 0.6;
   margin: auto;
-  padding: 2rem;
   position: relative;
 }
 
@@ -49,6 +48,11 @@ h1 {
   margin: auto;
   padding: 2rem;
   position: relative;
+}
+
+.teaser {
+  max-width: 840px;
+  margin: auto;
 }
 
 #app {
