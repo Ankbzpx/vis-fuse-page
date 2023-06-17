@@ -74,6 +74,18 @@ for (let i = 0; i < light_data.length; i++) {
 }
 
 const model_list = ["0277", "0309", "141311548775566", "141511558561737"];
+const model_z_dist = {
+  "0277": 1.0,
+  "0309": 0.85,
+  141311548775566: 0.9,
+  141511558561737: 0.8,
+};
+const model_y_offset = {
+  "0277": 0.0,
+  "0309": 0.02,
+  141311548775566: -0.03,
+  141511558561737: -0.04,
+};
 
 // https://stackoverflow.com/questions/10214873/make-canvas-as-wide-and-as-high-as-parent
 function fitToContainer(canvas) {
@@ -87,12 +99,12 @@ const canvas = document.getElementById("visCanvas");
 fitToContainer(canvas);
 
 const camera = new THREE.PerspectiveCamera(
-  75,
+  55,
   canvas.width / canvas.height,
   0.1,
   1000,
 );
-camera.position.z = 0.7;
+
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 renderer.setSize(canvas.width, canvas.height);
 renderer.setClearColor(0x777777, 1);
@@ -112,10 +124,15 @@ const scene = new THREE.Scene();
 
 const orbit_controls = new OrbitControls(camera, renderer.domElement);
 orbit_controls.enablePan = false;
-orbit_controls.minPolarAngle = Math.PI / 2;
-orbit_controls.maxPolarAngle = Math.PI / 2;
-orbit_controls.maxDistance = 0.7;
-orbit_controls.minDistance = 0.7;
+orbit_controls.minPolarAngle = (3 * Math.PI) / 7;
+orbit_controls.maxPolarAngle = (3 * Math.PI) / 7;
+
+function update_z_dist(z_dist) {
+  camera.position.z = z_dist;
+  orbit_controls.maxDistance = z_dist;
+  orbit_controls.minDistance = z_dist;
+}
+update_z_dist(1.0);
 
 let render_light = false;
 let current_sh_idx = 0;
@@ -175,6 +192,8 @@ async function load_model(model_name) {
     render_light ? light_material : color_material,
   );
   mesh.name = "mesh";
+  update_z_dist(model_z_dist[model_name]);
+  mesh.position.y = model_y_offset[model_name];
   scene.add(mesh);
 }
 
