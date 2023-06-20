@@ -216,7 +216,7 @@ function animate() {
 }
 
 const pane = new Pane({
-  title: "Panel",
+  title: "Configs",
   container: document.getElementById("gui_container"),
 });
 
