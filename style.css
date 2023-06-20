@@ -104,7 +104,11 @@ h1 {
 }
 
 #gui_container {
-  /* position: absolute; */
+  position: absolute;
+}
+
+.tp-lblv_v {
+  max-width: 100px;
 }
 
 @media (prefers-color-scheme: light) {

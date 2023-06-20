@@ -216,14 +216,15 @@ function animate() {
 }
 
 const pane = new Pane({
-  title: "Configs",
+  title: "Settings",
   container: document.getElementById("gui_container"),
 });
 
+pane.expanded = false;
 pane
   .addBlade({
     view: "list",
-    label: "models",
+    label: "Model",
     options: [
       { text: "sample 1", value: model_list[0] },
       { text: "sample 2", value: model_list[1] },
@@ -241,7 +242,7 @@ pane
 pane
   .addBlade({
     view: "list",
-    label: "lights",
+    label: "Light",
     options: [
       { text: "light 1", value: 0 },
       { text: "light 2", value: 1 },
@@ -260,9 +261,9 @@ pane
 pane
   .addInput(
     {
-      light_color: false,
+      Irradiance: false,
     },
-    "light_color",
+    "Irradiance",
   )
   .on("change", (ev) => {
     render_light = ev.value;
@@ -282,6 +283,7 @@ pane
     {
       min: 0,
       max: 360,
+      step: 1,
     },
   )
   .on("change", (ev) => {
@@ -298,6 +300,7 @@ pane
     {
       min: 0,
       max: 360,
+      step: 1,
     },
   )
   .on("change", (ev) => {
@@ -314,6 +317,7 @@ pane
     {
       min: 0,
       max: 360,
+      step: 1,
     },
   )
   .on("change", (ev) => {
